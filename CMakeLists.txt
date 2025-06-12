@@ -23,6 +23,16 @@ find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(angles REQUIRED)
 
+################################################################################
+# Build
+################################################################################
+if($ENV{BUILD_TYPE} MATCHES "Release")
+  set(CMAKE_BUILD_TYPE Release)
+  message("Build type is Release")
+else()
+  set(CMAKE_BUILD_TYPE Debug)
+  message("Build type is Debug")
+endif()
 
 add_executable(scan_filter_chain
   src/scan_filter_chain.cpp
